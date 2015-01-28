@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
+
 def get_discount_chocolate(wrappers, discount):
     if wrappers < discount:
         return 0
     else:
         new_wrappers = wrappers / discount
-        return new_wrappers + get_discount_chocolate(new_wrappers + wrappers % discount , discount)
+        return new_wrappers
+        + get_discount_chocolate(new_wrappers + wrappers % discount, discount)
 
 
 if __name__ == '__main__':

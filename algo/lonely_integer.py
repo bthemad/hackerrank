@@ -1,8 +1,8 @@
 #!/usr/bin/py
 from collections import Counter
 
+
 def lonelyinteger(a):
-    answer = 0
     cnts = Counter(a)
     for i, cnt in cnts.items():
         if (cnt == 1):

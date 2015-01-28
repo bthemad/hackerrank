@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import math
 
+
 def is_pure_square(n):
     sq = math.sqrt(n)
     return int(sq) * int(sq) == n
@@ -11,6 +12,7 @@ def count_squares(a, b):
     if (is_pure_square(a)):
         return diff + 1
     return diff
+
 
 if __name__ == '__main__':
     t = int(raw_input())
