@@ -1,24 +1,14 @@
 #!/bin/python
-def print_shift(a, i, elm):
-    res = []
-    for j in range(0, i):
-        res.append(a[j])
-    res.append(elm)
-    for k in range(i, len(a) - 1):
-        res.append(a[k])
-    return res
-
-
-def insertionSort(a):
-    ins = a[len(a) - 1]
-    for i in range(len(a) - 2, -1, -1):
-        if a[i] > ins:
-            print " ".join(map(str, print_shift(a, i, a[i])))
-        else:
-            print " ".join(map(str, print_shift(a, i + 1, ins)))
-            break
-    if ins < a[0]:
-        print " ".join(map(str, print_shift(a, 0, ins)))
+def insertionSort(l):
+    elm = l[len(l) - 1]
+    j = len(l) - 2
+    while (l[j] > elm) and (j >= 0):
+        l[j + 1] = l[j]
+        j -= 1
+        print " ".join(map(str, l))
+    l[j + 1] = elm
+    print " ".join(map(str, l))
+    return l
 
 
 m = input()
