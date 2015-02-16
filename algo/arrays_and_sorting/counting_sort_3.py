@@ -3,11 +3,17 @@ def print_int_list(l):
     print " ".join(map(str, l))
 
 
-def count(a):
-    len_a = len(a)
-    c = [len_a] * 100
+def frequences(a):
+    c = [0] * (max(a) + 1)
     for i in a:
-        c[0:i] = map(lambda x: x - 1, c[0:i])
+        c[i] += 1
+    return c
+
+
+def starting_points(c):
+    len_c = len(c)
+    for idx in range(1, len_c):
+        c[idx] = c[idx - 1] + c[idx]
     return c
 
 
@@ -17,5 +23,5 @@ if __name__ == '__main__':
     for i in range(n):
         j, _ = raw_input().strip().split(" ")
         a.append(int(j))
-    c = count(a)
+    c = starting_points(frequences(a))
     print_int_list(c)
