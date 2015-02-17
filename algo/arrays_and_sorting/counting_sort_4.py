@@ -7,29 +7,33 @@ def frequences(a):
 
 def starting_points(c):
     len_c = len(c)
+    c.insert(0, 0)
     for idx in range(1, len_c):
         c[idx] = c[idx - 1] + c[idx]
     return c
 
 
-def count_sort(a, c):
+def count_sort(a, b, c):
+    length = len(a)
     o = [0] * (len(a))
-    for i in a:
-        print c[i]
-        o[c[i] - 1] = i
-        c[i] -= 1
-        print o
+    for idx, key in enumerate(a):
+        if idx >= length / 2:
+            o[c[key]] = b[idx]
+        else:
+            o[c[key]] = "-"
+        c[key] += 1
     return o
 
 
-a = [4, 3, 0, 1, 5, 1, 2, 4, 2, 4]
-print a
-c = frequences(a)
-for key, freq in enumerate(c):
-    print "%d -> %d" % (key, freq)
-print c
-c = starting_points(c)
-for key, freq in enumerate(c):
-    print "%d -> %d" % (key, freq)
-print c
-print count_sort(a, c)
+if __name__ == '__main__':
+    n = input()
+    keys = []
+    strings = []
+    for i in range(n):
+        k, s = raw_input().strip().split(" ")
+        keys.append(int(k))
+        strings.append(s)
+    original_keys = keys[:]
+    keys = starting_points(frequences(keys))
+    result = count_sort(original_keys, strings, keys)
+    print " ".join(map(str, result))
