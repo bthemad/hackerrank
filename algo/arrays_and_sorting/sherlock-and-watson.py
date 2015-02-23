@@ -4,7 +4,8 @@
 def rotate_array(a, i):
     initial_length = len(a)
     a.extend(a)
-    print a
+    if i > initial_length:
+        i = i % initial_length
     return a[(initial_length - i):(initial_length * 2 - i)]
 
 
